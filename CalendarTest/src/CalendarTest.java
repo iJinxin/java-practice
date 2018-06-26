@@ -5,8 +5,14 @@ public class CalendarTest {
         LocalDate date = LocalDate.now();
         int month = date.getMonthValue();
         int today = date.getDayOfMonth();
+        System.out.printf("%s, %d, %d", date, month, today);
+        System.out.println();
 
         date = date.minusDays(today - 1);  //set to start of month
+
+        System.out.print(date);
+        System.out.println();
+
         DayOfWeek weekday = date.getDayOfWeek();
         int value = weekday.getValue(); // 1= monday ... 7 = sunday
 
