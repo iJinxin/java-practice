@@ -5,10 +5,14 @@ public class ManagerTest {
         Manager boss = new Manager("Carl Craker", 8000, 1987, 12, 15);
         boss.setBonus(5000);
 
-        Employee[] staff = new Employee[3];
+        Manager boss2 = new Manager();
+        boss2.setBonus(5000);
+
+        Employee[] staff = new Employee[4];
         staff[0] = boss;
-        staff[1] = new Employee("Harry", 5000, 1989, 10, 1);
-        staff[2] = new Employee("Tommy", 4000, 1990, 3, 15);
+        staff[1] = boss2;
+        staff[2] = new Employee("Harry", 5000, 1989, 10, 1);
+        staff[3] = new Employee("Tommy", 4000, 1990, 3, 15);
 
         for (Employee e:staff) {
             System.out.println("name:" + e.getName() + ",salary:" + e.getSalary());
