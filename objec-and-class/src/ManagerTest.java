@@ -8,6 +8,10 @@ public class ManagerTest {
         Manager boss2 = new Manager();
         boss2.setBonus(5000);
 
+        
+
+
+
         Employee[] staff = new Employee[4];
         staff[0] = boss;
         staff[1] = boss2;
@@ -46,6 +50,7 @@ class Employee{
     private String name;
     private double salary;
     private LocalDate hireDay;
+    protected int id;
 
     public Employee(String name, double salary, int year, int month, int day) {
         this.name = name;
