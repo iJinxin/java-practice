@@ -8,7 +8,7 @@ public class ManagerTest {
         Manager boss2 = new Manager();
         boss2.setBonus(5000);
 
-        
+
 
 
 
