@@ -10,35 +10,44 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const commonWebpackConfig = require('./webpack.common.js');
+const config = require('./config');
+
+// 设置NODE_ENV为开发环境
+process.env.NODE_ENV = 'development';
 
 const devWebpackConfig = merge(commonWebpackConfig, {
   mode: 'development',
-  devtool: 'inline-source-map',
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  devtool: config.dev.devtool,
   devServer: {
     contentBase: false, // what is CopyWebpackPlugin
-    hot: true   // hot
+    hot: true,   // hot
+    host: config.dev.host,
+    port: config.dev.port
   },
   plugins: [
+    // HMR热更新
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),  // HMR shows correct file name in console on update
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
       inject: true
-    }),
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../src/assets'),
-        to: './',
-        ignore: ['.*']
-      }
-    ])
+    })
   ]
 });
 
 module.exports = new Promise((resolve, reject) => {
-  devWebpackConfig.devServer.port = '3000';
-
   // add friendlyErrorsPlugin
   devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
     compilationSuccessInfo: {

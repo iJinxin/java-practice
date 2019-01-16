@@ -1,14 +1,11 @@
 import _ from 'lodash';
+import './assets/style/style.css';
+import './assets/font/iconfont.css'
+import './assets/img/img1.png'
 
 function component() {
   let element = document.createElement('div');
-  let btn = document.createElement('button');
-
-  element.innerHTML = _.join(['hello', 'webpack1'], ' ');
-  element.classList.add('hello');
-  btn.innerHTML = 'click me';
-
-  element.appendChild(btn);
+  element.innerHTML = _.join(['hello', 'webpack'], ' ');
 
   return element;
 }

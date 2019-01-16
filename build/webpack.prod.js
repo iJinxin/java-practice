@@ -6,9 +6,16 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const path = require('path');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+// 提取css代码
+// https://webpack.js.org/plugins/mini-css-extract-plugin/
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+// 在生产环境压缩css代码
+// https://webpack.js.org/plugins/mini-css-extract-plugin/#minimizing-for-production
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const commonWebpackConfig = require('./webpack.common.js');
 
-// 设置为NODE_ENV为生产环境
+// 设置NODE_ENV为生产环境
 process.env.NODE_ENV = 'production';
 
 const prodWebpackConfig = merge(commonWebpackConfig, {
@@ -26,6 +33,7 @@ const prodWebpackConfig = merge(commonWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': 'production'
     }),
+
     // 代码压缩
     // keep module.id stable，node_modules包更新频率低，可长缓存在客户端。
     new webpack.HashedModuleIdsPlugin()

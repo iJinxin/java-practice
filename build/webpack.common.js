@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugins = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const config = require('./config');
 
-//
+// 处理路径
 const resolve = (dir) => {
   return path.join(__dirname, '..', dir);
 };
@@ -12,7 +13,7 @@ module.exports = {
     app: './src/index.js'
   },
   output: {
-    filename: '[name].[contenthash].js',
+    filename: '[name].[hash].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -24,8 +25,15 @@ module.exports = {
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
-        loader: 'url-loader',
-        include: []
+        loader: 'file-loader',
+      },
+      {
+        test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+        loader: 'url-loader'
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'url-loader'
       }
     ]
   }

@@ -17,7 +17,8 @@
 - 全局变量管理
 
 ### common
-dev和prod共用配置
+- dev和prod共用配置
+- 各种loader
 
 ### utils
 共用function

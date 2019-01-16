@@ -1,0 +1,14 @@
+.webpack-demo {
+
+}
+.webpack-demo > img {
+  height: 200px;
+}
+.webpack-demo > i {
+  font-size: 20px;
+}
+.img_bg {
+  height: 200px;
+  width: 200px;
+  background-image: url("../img/img1.png");
+}
