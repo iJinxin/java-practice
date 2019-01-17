@@ -11,6 +11,9 @@ module.exports = {
   },
 
   build: {
+    // 打包后的入口页面
+    index: path.resolve(__dirname, '../dist/index.html'),
+
     // path，打包后文件存储路径
     assetsRoot: path.resolve(__dirname, '../dist'),
 

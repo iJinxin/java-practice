@@ -26,14 +26,26 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'file-loader',
+        options: {
+          limit: 10000,
+          outputPath: 'img/'
+        }
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-        loader: 'url-loader'
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          outputPath: 'video/'
+        }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'url-loader'
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          outputPath: 'font/'
+        }
       }
     ]
   }

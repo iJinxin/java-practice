@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "",
     "start": "webpack-dev-server --open --config build/webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config build/webpack.prod.js"
   },
   "dependencies": {
     "lodash": "^4.17.11"
@@ -22,7 +22,9 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.5.0",
+    "node-sass": "^4.11.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.1",
     "url-loader": "^1.1.2",
