@@ -49,8 +49,8 @@ const prodWebpackConfig = merge(commonWebpackConfig, {
 
     // 提取css
     new MiniCssExtractPlugin({
-      filename: '[name].css',
-      chunkFilename: '[id].css'
+      filename: 'css/[name].[hash].css',
+      chunkFilename: 'css/[id].[hash].css' // 按需加载时使用
     }),
 
     // 生成发布版的index.html
@@ -65,6 +65,13 @@ const prodWebpackConfig = merge(commonWebpackConfig, {
   ],
   optimization: {
     minimizer: [
+      // js压缩
+      new UglifyJSPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true // set true if you want js source maps
+      }),
+      // css压缩
       new OptimizeCSSAssetsPlugin({})
     ],
     runtimeChunk: 'single',
