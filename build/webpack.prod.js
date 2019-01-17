@@ -14,6 +14,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 // 在生产环境压缩css代码
 // https://webpack.js.org/plugins/mini-css-extract-plugin/#minimizing-for-production
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+
 const commonWebpackConfig = require('./webpack.common.js');
 const config = require('./config');
 
@@ -25,10 +26,12 @@ const prodWebpackConfig = merge(commonWebpackConfig, {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(c|sc|sa)ss$/,
         use: [
-          'style-loader',
-          'css-loader'
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
         ]
       }
     ]
@@ -44,11 +47,11 @@ const prodWebpackConfig = merge(commonWebpackConfig, {
       'process.env': 'production'
     }),
 
-    //
-    // new MiniCssExtractPlugin({
-    //   filename: '[name].css',
-    //   chunkFilename: '[id].css'
-    // }),
+    // 提取css
+    new MiniCssExtractPlugin({
+      filename: '[name].css',
+      chunkFilename: '[id].css'
+    }),
 
     // 生成发布版的index.html
     new HtmlWebpackPlugin({
@@ -61,6 +64,9 @@ const prodWebpackConfig = merge(commonWebpackConfig, {
     new webpack.HashedModuleIdsPlugin()
   ],
   optimization: {
+    minimizer: [
+      new OptimizeCSSAssetsPlugin({})
+    ],
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {

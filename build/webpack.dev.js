@@ -20,10 +20,12 @@ const devWebpackConfig = merge(commonWebpackConfig, {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.(c|sa|sc)ss$/,
         use: [
+          'css-loader',
           'style-loader',
-          'css-loader'
+          'postcss-loader',
+          'sass-loader'
         ]
       }
     ]

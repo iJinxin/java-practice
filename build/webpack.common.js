@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugins = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+
 const config = require('./config');
 
 // 处理路径
