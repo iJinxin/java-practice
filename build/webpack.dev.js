@@ -22,15 +22,15 @@ const devWebpackConfig = merge(commonWebpackConfig, {
       {
         test: /\.css$/,
         use: [
-          'css-loader',
           'style-loader',
+          'css-loader',
         ]
       },
       {
         test: /\.(sa|sc)ss$/,
         use: [
-          'css-loader',
           'style-loader',
+          'css-loader',
           'postcss-loader',
           'sass-loader'
         ]
