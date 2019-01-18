@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import './assets/style/style.css';
-// import './assets/style/demo.scss';
 import './assets/font/iconfont.css'
 import Test from './test';
+import Common from './common';
+Common();
 
 Test.testConsole();
 

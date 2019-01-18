@@ -75,12 +75,29 @@ const prodWebpackConfig = merge(commonWebpackConfig, {
       new OptimizeCSSAssetsPlugin({})
     ],
     runtimeChunk: 'single',
+    // js分片 https://webpack.js.org/plugins/split-chunks-plugin/#optimization-splitchunks
+    // node_modules 被引用模块单独打包
+    // 不属于node_modules的公用模块打包
     splitChunks: {
+      chunks: 'all',  // all, async异步, inline同步
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
       cacheGroups: {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all'
+          priority: 0,
+          minChunks: 1,
+          name: 'vendors'
+        },
+        common: {
+          test: /[\\/]src[\\/]/,
+          minChunks: 2,
+          name: 'commons'
         }
       }
     }

@@ -1,4 +1,7 @@
-import _ from 'lodash';
+// import _ from 'lodash';
+import Common from './common';
+
+Common();
 
 class Test {
   static testConsole() {
